@@ -114,7 +114,7 @@ dd if=/tmp/mac of=/sys/bus/nvmem/devices/stm32-romem0/nvmem bs=4 seek=57
 echo -n "BCB100A1A100000000000000" | xxd -r -p > "/tmp/board_sn"
 dd if=/tmp/board_sn of=/sys/bus/nvmem/devices/stm32-romem0/nvmem bs=4 seek=60
 
-# For board that is for internal purpose genereate random miner_hwid
+# For board that is for internal purpose generate random miner_hwid
 dd if=/dev/urandom bs=1 count=12 2>/dev/null | base64 | tr "+/" "ab" | base64 -d  > "/tmp/miner_hwid"
 dd if=/tmp/miner_hwid of=/sys/bus/nvmem/devices/stm32-romem0/nvmem bs=4 seek=63
 ```
